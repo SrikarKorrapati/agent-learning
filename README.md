@@ -20,6 +20,14 @@ Small Python examples for learning the OpenAI Responses API, LangGraph, structur
   chatbot_with_memory.py
   inspect_checkpoint.py
   inspect_database.py
+agent-harness/
+  harnesses/
+    simple_harness.py
+    harness_with_sqlite_memory.py
+    harness_with_short_term_memory.py
+  harness.py
+  main.py
+  skills/
 ```
 
 ## Setup
