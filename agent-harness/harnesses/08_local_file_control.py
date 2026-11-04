@@ -21,48 +21,6 @@ def resolve_path(path):
     return target
 
 
-def create_directory(path):
-    resolve_path(path).mkdir(parents=True, exist_ok=True)
-    return f"Created directory: {path}"
-
-
-def change_directory(path):
-    global current_directory
-    current_directory = resolve_path(path)
-    location = current_directory.relative_to(workspace)
-    return f"Current directory: {location or '.'}"
-
-
-def list_directory(path):
-    directory = resolve_path(path)
-    items = [
-        item.name + ("/" if item.is_dir() else "")
-        for item in sorted(directory.iterdir())
-    ]
-    return "\n".join(items)
-
-
-def create_file(path, content):
-    resolve_path(path).write_text(content)
-    return f"Created file: {path}"
-
-
-def read_file(path):
-    return resolve_path(path).read_text()
-
-
-def modify_file(path, old_text, new_text):
-    file = resolve_path(path)
-    content = file.read_text()
-    file.write_text(content.replace(old_text, new_text))
-    return f"Modified file: {path}"
-
-
-def delete_file(path):
-    resolve_path(path).unlink()
-    return f"Deleted file: {path}"
-
-
 def file_tool(name, description, properties):
     return {
         "type": "function",
@@ -125,35 +83,52 @@ tools = [
 
 
 def execute_tool(call):
+    global current_directory
+
     arguments = json.loads(call.arguments)
 
     if call.name == "create_directory":
-        return create_directory(arguments["path"])
+        path = arguments["path"]
+        resolve_path(path).mkdir(parents=True, exist_ok=True)
+        return f"Created directory: {path}"
 
     if call.name == "change_directory":
-        return change_directory(arguments["path"])
+        current_directory = resolve_path(arguments["path"])
+        location = current_directory.relative_to(workspace)
+        return f"Current directory: {location}"
 
     if call.name == "list_directory":
-        return list_directory(arguments["path"])
+        directory = resolve_path(arguments["path"])
+        items = [
+            item.name + ("/" if item.is_dir() else "")
+            for item in sorted(directory.iterdir())
+        ]
+        return "\n".join(items)
 
     if call.name == "create_file":
-        return create_file(
-            arguments["path"],
-            arguments["content"],
-        )
+        path = arguments["path"]
+        resolve_path(path).write_text(arguments["content"])
+        return f"Created file: {path}"
 
     if call.name == "read_file":
-        return read_file(arguments["path"])
+        return resolve_path(arguments["path"]).read_text()
 
     if call.name == "modify_file":
-        return modify_file(
-            arguments["path"],
-            arguments["old_text"],
-            arguments["new_text"],
+        path = arguments["path"]
+        file = resolve_path(path)
+        content = file.read_text()
+        file.write_text(
+            content.replace(
+                arguments["old_text"],
+                arguments["new_text"],
+            )
         )
+        return f"Modified file: {path}"
 
     if call.name == "delete_file":
-        return delete_file(arguments["path"])
+        path = arguments["path"]
+        resolve_path(path).unlink()
+        return f"Deleted file: {path}"
 
 
 def run_agent(task):
