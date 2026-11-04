@@ -1,10 +1,10 @@
 # Agent Harness
 
-Start with `harnesses/simple_harness.py`. It keeps every concept in one short file using
+Start with `harnesses/01_basic_harness.py`. It keeps every concept in one short file using
 plain lists, dictionaries and functions.
 
 ```bash
-python agent-harness/harnesses/simple_harness.py
+python agent-harness/harnesses/01_basic_harness.py
 ```
 
 `harness.py` and `main.py` are the more complete version for later.

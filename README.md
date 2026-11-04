@@ -22,9 +22,13 @@ Small Python examples for learning the OpenAI Responses API, LangGraph, structur
   inspect_database.py
 agent-harness/
   harnesses/
-    simple_harness.py
-    harness_with_sqlite_memory.py
-    harness_with_short_term_memory.py
+    01_basic_harness.py
+    02_long_term_memory.py
+    03_short_term_memory.py
+    04_agent_communication_handoff.py
+    05_agent_communication_feedback_loop.py
+    06_agent_communication_threshold_loop.py
+    07_browser_control.py
   harness.py
   main.py
   skills/

@@ -4,6 +4,7 @@ langchain-openai
 langgraph
 langgraph-checkpoint-sqlite
 openai
+playwright
 pydantic
 python-dotenv
 tavily-python
