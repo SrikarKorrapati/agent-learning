@@ -29,6 +29,7 @@ agent-harness/
     05_agent_communication_feedback_loop.py
     06_agent_communication_threshold_loop.py
     07_browser_control.py
+    08_local_file_control.py
   harness.py
   main.py
   skills/
