@@ -32,6 +32,8 @@ agent-harness/
     06_agent_communication_threshold_loop.py
     07_browser_control.py
     08_local_file_control.py
+    09_visual_browser_control.py
+    10_agent_browser_control.py
     11_async_subagents.py
   harness.py
   main.py
