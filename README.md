@@ -20,6 +20,8 @@ Small Python examples for learning the OpenAI Responses API, LangGraph, structur
   chatbot_with_memory.py
   inspect_checkpoint.py
   inspect_database.py
+06-browser-automation/
+  selenium_form.py
 agent-harness/
   harnesses/
     01_basic_harness.py

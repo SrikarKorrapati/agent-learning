@@ -7,4 +7,5 @@ openai
 playwright
 pydantic
 python-dotenv
+selenium
 tavily-python
