@@ -59,11 +59,23 @@ python 04-react-agent/react_agent.py
 
 The real `.env` file and local SQLite databases are intentionally excluded from Git.
 
-## Open a folder in Cursor
+## Open a folder in Cursor through computer use
 
-On macOS with Cursor installed, run this from the repository root. The script
-uses only the Python standard library. Replace `.` with the path to another folder.
+The Python script sends a screenshot of your Mac's main display to OpenAI and asks
+the model to open the requested folder in Cursor. The model chooses mouse clicks
+and keystrokes. Python executes them and sends back a fresh screenshot so the
+model can check which window or dialog appeared.
+
+Install Cursor and the dependencies from the setup above. Set `OPENAI_API_KEY`
+in the root `.env`. The default model is `gpt-6.2-sol`. You can set `OPENAI_MODEL`
+to another model that supports the Responses API computer tool. In macOS System
+Settings → Privacy & Security, allow the terminal app running Python to use
+Screen Recording and Accessibility. Keep Cursor on the main display and use a
+desktop you are comfortable sharing with the API.
 
 ```bash
-python3 07-desktop-automation/open_cursor.py .
+python3 07-desktop-automation/open_cursor.py agent-harness
 ```
+
+Read `open_in_cursor()` for the model loop and `perform()` for the mouse and
+keyboard actions. The script stops after 20 model turns.

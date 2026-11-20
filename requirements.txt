@@ -4,8 +4,11 @@ langchain-openai
 langgraph
 langgraph-checkpoint-sqlite
 openai
+pillow; sys_platform == "darwin"
 playwright
 pydantic
+pynput; sys_platform == "darwin"
+pyobjc-framework-Quartz; sys_platform == "darwin"
 python-dotenv
 selenium
 tavily-python
