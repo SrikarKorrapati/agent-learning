@@ -24,6 +24,7 @@ Small Python examples for learning the OpenAI Responses API, LangGraph, structur
   selenium_form.py
 07-desktop-automation/
   open_cursor.py
+  desktop_model.py
 agent-harness/
   harnesses/
     01_basic_harness.py
@@ -68,7 +69,7 @@ model can check which window or dialog appeared.
 
 Install Cursor and the dependencies from the setup above. Set `OPENAI_API_KEY`
 in the root `.env`. The default model is `gpt-6.2-sol`. You can set `OPENAI_MODEL`
-to another model that supports the Responses API computer tool. In macOS System
+to another Responses API model that supports image input and JSON output. In macOS System
 Settings → Privacy & Security, allow the terminal app running Python to use
 Screen Recording and Accessibility. Keep Cursor on the main display and use a
 desktop you are comfortable sharing with the API.
@@ -77,5 +78,8 @@ desktop you are comfortable sharing with the API.
 python3 07-desktop-automation/open_cursor.py agent-harness
 ```
 
-Read `open_in_cursor()` for the model loop and `perform()` for the mouse and
-keyboard actions. The script stops after 20 model turns.
+Start with `run_agent()` in [open_cursor.py](07-desktop-automation/open_cursor.py).
+It takes a screenshot, asks for one action, and executes it. The
+[`ask_model()` helper](07-desktop-automation/desktop_model.py) sends the image
+to OpenAI and reads the action. The loop stops when the model returns `done` or
+reaches 20 steps.
