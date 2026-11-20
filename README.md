@@ -22,6 +22,8 @@ Small Python examples for learning the OpenAI Responses API, LangGraph, structur
   inspect_database.py
 06-browser-automation/
   selenium_form.py
+07-desktop-automation/
+  open_cursor.py
 agent-harness/
   harnesses/
     01_basic_harness.py
@@ -56,3 +58,12 @@ python 04-react-agent/react_agent.py
 ```
 
 The real `.env` file and local SQLite databases are intentionally excluded from Git.
+
+## Open a folder in Cursor
+
+On macOS with Cursor installed, run this from the repository root. The script
+uses only the Python standard library. Replace `.` with the path to another folder.
+
+```bash
+python3 07-desktop-automation/open_cursor.py .
+```
